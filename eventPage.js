@@ -1,13 +1,14 @@
+// register contextmenu listener to chrome when it is launched
 chrome.runtime.onInstalled.addListener(()=>{
     chrome.contextMenus.create({
         id: 'clickObject',
         title: 'Add event to calendar',
         type: 'normal',
-    // context is when user selects on something (selection is type of user
-    // action, there may be others -- refer to chrome API)
         contexts: ['selection']
     });
 });
+// when contextmenu listener detects a click,
+// execute the following actions:
 chrome.contextMenus.onClicked.addListener(
     (info) => {
         chrome.tabs.create({
@@ -15,6 +16,4 @@ chrome.contextMenus.onClicked.addListener(
         });
     });
 
-/// register event listener on startup
-// chrome.action API>
 
